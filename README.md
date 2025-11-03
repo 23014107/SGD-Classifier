@@ -1,6 +1,6 @@
 # 7-SGD-Classifier
-# Name: RAMYA.P
-# Register Number: 212223240137
+#Name: RAMYA.P
+#Register Number: 212223240137
 
 ## AIM:
 To write a program to predict the type of species of the Iris flower using the SGD Classifier.
@@ -12,11 +12,17 @@ To write a program to predict the type of species of the Iris flower using the S
 ## Algorithm
 
 1.Import required libraries (pandas, numpy, sklearn).
+
 2.Load the Iris dataset from sklearn.datasets.
+
 3.Split the dataset into training and testing sets.
+
 4.Initialize the SGDClassifier with loss="log_loss" (for logistic regression).
+
 5.Train the model using the training dataset.
+
 6.Predict the species for the test dataset.
+
 7.Evaluate model performance using accuracy score and classification report.
 
 ## Program:
