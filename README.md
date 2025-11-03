@@ -1,7 +1,8 @@
-# 7-SGD-Classifier
-#Name: RAMYA.P
+# SGD-Classifier
 
-#Register Number: 212223240137
+Name : Ramya.P
+
+Register Number:  212223240137
 
 ## AIM:
 To write a program to predict the type of species of the Iris flower using the SGD Classifier.
@@ -11,27 +12,22 @@ To write a program to predict the type of species of the Iris flower using the S
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
+1.Import Necessary Libraries and Load Data
 
-1.Import required libraries (pandas, numpy, sklearn).
+2.Split Dataset into Training and Testing Sets
 
-2.Load the Iris dataset from sklearn.datasets.
+3.Train the Model Using Stochastic Gradient Descent (SGD)
 
-3.Split the dataset into training and testing sets.
+4.Make Predictions and Evaluate Accuracy
 
-4.Initialize the SGDClassifier with loss="log_loss" (for logistic regression).
-
-5.Train the model using the training dataset.
-
-6.Predict the species for the test dataset.
-
-7.Evaluate model performance using accuracy score and classification report.
+5.Generate Confusion Matrix
 
 ## Program:
 ```
 /*
 Program to implement the prediction of iris species using SGD Classifier.
-Developed by: RAMYA.P
-RegisterNumber: 212223240137
+Developed by: Ramya.P
+RegisterNumber:  212223240137
 */
 import pandas as pd
 from sklearn.datasets import load_iris
@@ -41,44 +37,32 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load Iris dataset
 iris = load_iris()
+
 df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
 df['target'] = iris.target
+
 print(df.head())
 
-# Features and target
 X = df.drop('target', axis=1)
 y = df['target']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Split into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
-)
-
-# Train SGDClassifier
 sgd_clf = SGDClassifier(max_iter=1000, tol=1e-3)
+
 sgd_clf.fit(X_train, y_train)
 
-# Predict on test set
 y_pred = sgd_clf.predict(X_test)
 
-# Accuracy
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy:.3f}")
 
-# Confusion Matrix
 cm = confusion_matrix(y_test, y_pred)
 print("Confusion Matrix:")
 print(cm)
 
-# Plot confusion matrix
-plt.figure(figsize=(6, 4))
-sns.heatmap(
-    cm, annot=True, cmap="Blues", fmt='d',
-    xticklabels=iris.target_names,
-    yticklabels=iris.target_names
-)
+plt.figure(figsize=(6,4))
+sns.heatmap(cm, annot=True, cmap="Blues", fmt='d', xticklabels=iris.target_names, yticklabels=iris.target_names)
 plt.xlabel("Predicted Label")
 plt.ylabel("True Label")
 plt.title("Confusion Matrix")
@@ -86,19 +70,9 @@ plt.show()
 ```
 
 ## Output:
-   sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)  target
-0                5.1               3.5                1.4               0.2       0
-1                4.9               3.0                1.4               0.2       0
-2                4.7               3.2                1.3               0.2       0
-3                4.6               3.1                1.5               0.2       0
-4                5.0               3.6                1.4               0.2       0
-Accuracy: 0.867
-Confusion Matrix:
-[[10  0  0]
- [ 2  5  2]
- [ 0  0 11]]
+<img width="811" height="401" alt="image" src="https://github.com/user-attachments/assets/a0f18278-0cc2-455d-b266-c37638b299a4" />
 
-![confusion matrix](https://github.com/user-attachments/assets/f9132ec1-83f5-4aaf-a2ca-68541860519c)
+<img width="703" height="504" alt="image" src="https://github.com/user-attachments/assets/a30d2e90-42ec-47b8-84f8-2548bad02523" />
 
 
 ## Result:
